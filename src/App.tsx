@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from "./App.module.css";
+
+const screenNames = ["Initial info", "Password screen", "Review"];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={styles.container}>
+      <header>
+        <h1>Super test form</h1>
+        <p>Screen name</p>
       </header>
+      <main>The main content goes here</main>
+      <aside>Screen number</aside>
     </div>
   );
 }
