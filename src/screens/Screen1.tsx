@@ -2,7 +2,7 @@ import React, { type FormEventHandler } from "react";
 import styles from "./Screen.module.css";
 import { addData } from "../state/appReducer";
 
-interface ScreenProps {
+export interface ScreenProps {
   dispatch: React.Dispatch<ReturnType<typeof addData>>;
 }
 

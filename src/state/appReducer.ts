@@ -37,8 +37,11 @@ const appSlice = createSlice({
       state.navigation.currentScreen++;
       Object.assign(state.formData, action.payload);
     },
+    resetForm(state) {
+      Object.assign(state, initialState);
+    },
   },
 });
 
-export const { addData } = appSlice.actions;
+export const { addData, resetForm } = appSlice.actions;
 export default appSlice.reducer;
