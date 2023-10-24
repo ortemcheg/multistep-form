@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface State {
+export interface State {
   navigation: {
     currentScreen: number;
   };
@@ -33,7 +33,6 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     addData(state, action: PayloadAction<Partial<State["formData"]>>) {
-      console.log("updating data");
       state.navigation.currentScreen++;
       Object.assign(state.formData, action.payload);
     },
