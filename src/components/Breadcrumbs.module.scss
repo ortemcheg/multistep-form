@@ -1,0 +1,21 @@
+.breadcrumbs {
+  margin: 0;
+  list-style-type: none;
+
+  > li {
+    font-size: 1rem;
+    color: #817ca5; // TODO use variables
+    padding-inline-start: 1ch;
+    & + li {
+      margin-block-start: 1.5rem;
+    }
+    &::marker {
+      content: url("../assets/images/breadCrump.svg");
+    }
+  }
+  > li.selected {
+    &::marker {
+      content: url("../assets/images/breadCrumpSelected.svg");
+    }
+  }
+}

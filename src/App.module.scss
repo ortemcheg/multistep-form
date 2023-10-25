@@ -1,28 +1,18 @@
-:root {
-  box-sizing: border-box;
-}
-*,
-::before,
-::after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-}
-
-header {
-  background-color: #fed330;
-  padding: 20px;
-}
-article {
-  background-color: #20bf6b;
-  padding: 20px;
-}
-aside {
-  background-color: #45aaf2;
-}
-footer {
-  padding: 20px;
-  background-color: #fd9644;
+.header {
+  font-family: "Inter", sans-serif;
+  margin: 4.5rem 0;
+  > h1 {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+  }
+  > h2 {
+    color: #817ca5; // TODO use variables
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+    margin-block-start: 1rem;
+    text-align: center;
+  }
 }

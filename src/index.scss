@@ -1,0 +1,19 @@
+@import "~@fontsource/inter";
+@import "~@fontsource/inter/400.css";
+
+:root {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  background-image: url("./assets/images/background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
