@@ -3,6 +3,22 @@ interface BreadcrumbsProps {
   stepNames: string[];
   currentStep: number;
 }
+
+type MarkerPosition = "completed" | "current" | "upcoming";
+
+const getMarkerPosition = (
+  currentStep: number,
+  index: number
+): MarkerPosition => {
+  if (currentStep === index) {
+    return "current";
+  } else if (currentStep < index) {
+    return "upcoming";
+  } else {
+    return "completed";
+  }
+};
+
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   stepNames,
   currentStep,
@@ -10,7 +26,10 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   return (
     <ul className={styles.breadcrumbs}>
       {stepNames.map((name, index) => (
-        <li key={name} className={currentStep === index ? styles.selected : ""}>
+        <li
+          key={name}
+          className={styles[getMarkerPosition(currentStep, index)]}
+        >
           {name}
         </li>
       ))}

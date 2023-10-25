@@ -1,5 +1,7 @@
 .breadcrumbs {
   margin: 0;
+  margin-block-start: -2rem;
+  margin-inline-start: 4rem;
   list-style-type: none;
 
   > li {
@@ -9,13 +11,20 @@
     & + li {
       margin-block-start: 1.5rem;
     }
+  }
+  > li.current {
     &::marker {
-      content: url("../assets/images/breadCrump.svg");
+      content: url("../assets/images/breadCrumpCurrent.svg");
     }
   }
-  > li.selected {
+  > li.upcoming {
     &::marker {
-      content: url("../assets/images/breadCrumpSelected.svg");
+      content: url("../assets/images/breadCrumpUpcoming.svg");
+    }
+  }
+  > li.completed {
+    &::marker {
+      content: url("../assets/images/breadCrumpCompleted.svg");
     }
   }
 }
