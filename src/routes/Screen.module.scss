@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: #817ca5;
+  min-width: 400px;
+  min-height: 452px;
+  border-radius: 20px;
+  padding: 40px 20px;
+
+  > button {
+    border-color: transparent;
+    margin-block-start: auto;
+    height: 60px;
+    padding: 16px 0;
+    font-size: 24px;
+    text-transform: capitalize;
+    border-radius: 4px;
+
+    &:disabled {
+      background-color: #a39fc1;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+      + li {
+        padding-top: 40px;
+      }
+      label {
+        text-transform: capitalize;
+        color: white;
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.14;
+      }
+    }
+  }
+}

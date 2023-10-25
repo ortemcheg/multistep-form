@@ -1,6 +1,6 @@
 import React, { type FormEventHandler } from "react";
 import { type ScreenProps } from "./Screen1";
-import styles from "./Screen.module.css";
+import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
 
 const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
@@ -23,10 +23,8 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
           <label htmlFor="repeatedpassword">repeat password</label>
           <input type="password" id="repeatedpassword" />
         </li>
-        <li>
-          <button type="submit">continue</button>
-        </li>
       </ul>
+      <button type="submit">continue</button>
     </form>
   );
 };

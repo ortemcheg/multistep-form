@@ -1,7 +1,7 @@
 import { useMemo, useReducer } from "react";
 import reducer, { initialState } from "./state/appReducer";
-import styles from "./App.module.css";
-import { getScreen } from "./screens/routes";
+import styles from "./App.module.scss";
+import { getScreen } from "./routes/routes";
 
 const screenNames = ["Initial info", "Password screen", "Review screen"];
 

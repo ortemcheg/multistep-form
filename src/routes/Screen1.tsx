@@ -1,12 +1,14 @@
 import React, { type FormEventHandler } from "react";
-import styles from "./Screen.module.css";
+import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
+import useGetCountries from "./useGetCountries";
 
 export interface ScreenProps {
   dispatch: React.Dispatch<ReturnType<typeof addData>>;
 }
 
 const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
+  const { status: countryApiStatus, data: countries } = useGetCountries();
   const submitHandler: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch(
@@ -18,6 +20,11 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
       })
     );
   };
+  console.log({
+    countryApiStatus,
+    countries,
+  });
+
   return (
     <form className={styles.form} onSubmit={submitHandler}>
       <ul>
@@ -36,15 +43,15 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
         <li>
           <label htmlFor="country">country</label>
           <select id="country">
-            <option>Afghanistan</option>
-            <option>Russia</option>
-            <option>United States of America</option>
+            {countryApiStatus === "success"
+              ? countries.map((country) => (
+                  <option key={country}>{country}</option>
+                ))
+              : null}
           </select>
         </li>
-        <li>
-          <button type="submit">continue</button>
-        </li>
       </ul>
+      <button type="submit">continue</button>
     </form>
   );
 };
