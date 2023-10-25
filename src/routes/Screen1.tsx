@@ -3,12 +3,25 @@ import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
 import useGetCountries from "./useGetCountries";
 
+import { z } from "zod";
+
+const validPhonePattern = /^\+?\(?[0-9]{3}\)?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+
+const formValidationSchema = z
+  .object({
+    username: z.string().trim().min(4).max(12),
+    email: z.string().trim().email(),
+    phoneNumber: z.string().trim().regex(validPhonePattern),
+    country: z.string().trim(),
+  })
+  .required();
+
 export interface ScreenProps {
   dispatch: React.Dispatch<ReturnType<typeof addData>>;
 }
 
 const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
-  const { status: countryApiStatus, data: countries } = useGetCountries();
+  // const { status: countryApiStatus, data: countries } = useGetCountries();
   const submitHandler: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch(
@@ -20,10 +33,6 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
       })
     );
   };
-  console.log({
-    countryApiStatus,
-    countries,
-  });
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>
@@ -43,11 +52,7 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
         <li>
           <label htmlFor="country">country</label>
           <select id="country">
-            {countryApiStatus === "success"
-              ? countries.map((country) => (
-                  <option key={country}>{country}</option>
-                ))
-              : null}
+            <option>hi there</option>
           </select>
         </li>
       </ul>
