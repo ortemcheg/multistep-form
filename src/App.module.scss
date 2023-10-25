@@ -12,31 +12,17 @@ body {
 }
 
 header {
-  grid-area: header;
   background-color: #fed330;
   padding: 20px;
 }
 article {
-  grid-area: content;
   background-color: #20bf6b;
   padding: 20px;
 }
 aside {
-  grid-area: sidebar;
   background-color: #45aaf2;
 }
 footer {
   padding: 20px;
-  grid-area: footer;
   background-color: #fd9644;
 }
-
-// .container {
-//   display: grid;
-//   grid-gap: 20px;
-//   grid-template-columns: 1fr 3fr;
-//   grid-template-areas:
-//     "header  header"
-//     "sidebar content"
-//     "footer  footer";
-// }
