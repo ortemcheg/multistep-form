@@ -1,0 +1,40 @@
+.label {
+  display: block;
+  color: white;
+  font-family: Inter, sans-serif;
+}
+.popover {
+  background-color: white;
+  height: 12.5rem;
+  overflow-y: scroll;
+}
+.button {
+  width: 100%;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  background-color: white;
+  color: #413c5f;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  align-items: center;
+  border: 0;
+
+  *:last-child {
+    margin-left: auto;
+  }
+}
+
+.item {
+  font-family: Inter, sans-serif;
+  color: #413c5f;
+  background-color: white;
+  padding: 0.8rem 1rem;
+
+  &:hover {
+    outline: none;
+    background-color: #f6f4ff;
+  }
+}
+.selectedItem {
+  font-weight: 600;
+}

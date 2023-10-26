@@ -23,7 +23,7 @@ function App() {
         </header>
       </Grid>
       <Grid xs={4}>
-        <aside>
+        <aside className={styles.sidebar}>
           <Breadcrumbs stepNames={screenNames} currentStep={currentScreen} />
         </aside>
       </Grid>

@@ -1,6 +1,7 @@
 import React, { type FormEventHandler } from "react";
 import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
+import Select from "../components/ common/Select/Select";
 import useGetCountries from "./useGetCountries";
 
 import { z } from "zod";
@@ -36,6 +37,7 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>
+      <Select label="Country" />
       <ul>
         <li>
           <label htmlFor="username">username</label>

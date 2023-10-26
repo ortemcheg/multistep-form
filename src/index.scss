@@ -1,9 +1,11 @@
 @import "~@fontsource/inter";
 @import "~@fontsource/inter/400.css";
+@import "~@fontsource/inter/600.css";
 
 :root {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  font-weight: 400;
   background-image: url("./assets/images/background.svg");
   background-repeat: no-repeat;
   background-size: cover;

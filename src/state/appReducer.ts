@@ -33,6 +33,9 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     addData(state, action: PayloadAction<Partial<State["formData"]>>) {
+      // RTK uses Immer,
+      // which makes it possible to use mutating syntax (like you see below)
+      // to produce immutable data structures
       state.navigation.currentScreen++;
       Object.assign(state.formData, action.payload);
     },
