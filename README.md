@@ -3,7 +3,7 @@
 ## Abstract
 
 Implements Multistep form according to the following specification:
-Design: (https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)[Figma]
+Design: [Figma](https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)
 
 ### Expected Behaviour:
 
@@ -24,7 +24,7 @@ Design: (https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)[Figma]
 
 ### My notes on the specification
 
-- The spec asks for a phone field on the first step, but the design doesn't include it. - I'll include the phone field.
+- The spec asks for a phone field on the first step, but the design doesn't include it. I'll include the phone field.
 - The spec doesn't mention what to do if the request to fetch the list of countries fails. In that case, I'll probably display a text field instead of a select input.
 - The design doesn't show a hover state for the button
 
@@ -32,21 +32,21 @@ Design: (https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)[Figma]
 
 ### Routing
 
-The spec doesn't require the Steps to be bookmarkable, nor does it demand to restore the formdata should the user abandon filling the form at any step. This will make using routing libraries (such as React Router, TanStack Router etc.) an overkill. We'll rely on the conditional rendering instead.
+The spec doesn't require the Steps to be bookmarkable, nor does it demand to restore the formdata should the user abandon filling the form at any step. This will make using routing libraries (such as `React Router`, `TanStack Router` etc.) an overkill. We'll rely on the conditional rendering instead.
 
 ### State management
 
-The app's state isn't complex, and there's no need to pass any part of it down multiple levels. We'll use useReducer for state management and createSlice from Redux Toolkit to simplify writing the reducer and actions for useReducer. Additionally, using RTK will also signal to the reviewers that I'm familiar with Redux 👨🏼‍💻
+The app's state isn't complex, and there's no need to pass any part of it down multiple levels. We'll use `useReducer` for state management and createSlice from `Redux Toolkit` to simplify writing the reducer and actions for `useReducer`. Additionally, using `RTK` will also signal to the reviewers that I'm familiar with `Redux` 👨🏼‍💻
 
 ### Data validation
 
-We'll utilize zod to parse data from external sources, including forms and APIs. This approach provides robust protection against runtime type errors without the need for overly defensive programming. Additionally, useForm can integrate zod schemas to streamline form validation, eliminating the need to implement separate validation rules. As a bonus, this approach will also enhance the ease of working with TypeScript
+We'll utilize `zod` to parse data from external sources, including forms and APIs. This approach provides robust protection against runtime type errors without the need for overly defensive programming. Additionally, `useForm` can integrate `zod` schemas to streamline form validation, eliminating the need to implement separate validation rules. As a bonus, this approach will also enhance the ease of working with `TypeScript`
 
 ### Styling
 
 ### TODOs
 
-[] Eradicate MUI
+[] Eradicate MUI, including it was a mistake 🤷🏼‍♂️
 [] Use CSS custom props (variables)
 [] Implement testing
 
