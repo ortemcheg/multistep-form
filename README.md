@@ -32,11 +32,11 @@ Design: [Figma](https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)
 
 ### Routing
 
-The spec doesn't require the Steps to be bookmarkable, nor does it demand to restore the formdata should the user abandon filling the form at any step. This will make using routing libraries (such as `React Router`, `TanStack Router` etc.) an overkill. We'll rely on the conditional rendering instead.
+The spec doesn't require the Steps to be bookmarkable, nor does it demand to restore the formdata should the user abandon filling the form at any step. This makes using routing libraries (such as `React Router`, `TanStack Router` etc.) an overkill. We'll rely on the conditional rendering instead.
 
 ### State management
 
-The app's state isn't complex, and there's no need to pass any part of it down multiple levels. We'll use `useReducer` for state management and createSlice from `Redux Toolkit` to simplify writing the reducer and actions for `useReducer`. Additionally, using `RTK` will also signal to the reviewers that I'm familiar with `Redux` 👨🏼‍💻
+The app's state isn't complex, and there's no need to pass any part of it down multiple levels. We'll use `useReducer` for state management and `createSlice` from `Redux Toolkit` to simplify writing the reducer and actions for `useReducer`. Additionally, using `RTK` will also signal to the reviewers that I'm familiar with `Redux` 👨🏼‍💻
 
 ### Data validation
 
@@ -44,10 +44,14 @@ We'll utilize `zod` to parse data from external sources, including forms and API
 
 ### Styling
 
-### TODOs
+## TODOs
 
-[] Eradicate MUI, including it was a mistake 🤷🏼‍♂️
+### Clean-ups
+
+[] Eradicate MUI, including it was a mistake 🤷🏼‍♂️. Use CSS Grid for the layout.
+
 [] Use CSS custom props (variables)
+
 [] Implement testing
 
 ### Futher optimizations
