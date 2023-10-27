@@ -16,6 +16,7 @@ interface SelectDefaultProps {
   disabled?: boolean;
   isValid?: boolean;
   errorMessage?: string;
+  items: string[];
 }
 
 const Select: React.FC<SelectDefaultProps> = ({
@@ -23,6 +24,7 @@ const Select: React.FC<SelectDefaultProps> = ({
   disabled,
   errorMessage = "",
   isValid = true,
+  items,
 }) => {
   console.log("hello from select", { label, disabled, errorMessage });
   return (
@@ -39,12 +41,9 @@ const Select: React.FC<SelectDefaultProps> = ({
       )}
       <Popover className={styles.popover}>
         <ListBox>
-          <ListBoxItem>Afghanistan</ListBoxItem>
-          <ListBoxItem>Turkmenistan</ListBoxItem>
-          <ListBoxItem>Russia</ListBoxItem>
-          <ListBoxItem>United Arab Emirates</ListBoxItem>
-          <ListBoxItem>United States of America</ListBoxItem>
-          <ListBoxItem>Uzbekistan</ListBoxItem>
+          {items.map((item) => (
+            <ListBoxItem>{item}</ListBoxItem>
+          ))}
         </ListBox>
       </Popover>
     </Selecter>

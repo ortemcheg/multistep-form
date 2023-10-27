@@ -3,6 +3,7 @@ import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
 import Select from "../components/common/Select/Select";
 import FormInput from "../components/common/FormInput/FormInput";
+import { useForm, Controller } from "react-hook-form";
 import useGetCountries from "./useGetCountries";
 
 import { z } from "zod";
@@ -23,7 +24,7 @@ export interface ScreenProps {
 }
 
 const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
-  // const { status: countryApiStatus, data: countries } = useGetCountries();
+  const { status: countryApiStatus, data: countries } = useGetCountries();
   const submitHandler: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch(
@@ -49,7 +50,9 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
           <FormInput type="telemele" label="Phone number" />
         </li>
         <li>
-          <Select label="Country" />
+          {countryApiStatus === "success" && (
+            <Select label="Country" items={countries} />
+          )}
         </li>
       </ul>
       <button type="submit">continue</button>
