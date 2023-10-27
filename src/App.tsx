@@ -11,8 +11,8 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { currentScreen } = state.navigation;
   const Screen = useMemo(
-    () => getScreen(currentScreen, dispatch),
-    [currentScreen]
+    () => getScreen(currentScreen, state, dispatch),
+    [currentScreen, state]
   );
   return (
     <Grid container>

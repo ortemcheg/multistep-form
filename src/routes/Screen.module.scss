@@ -45,3 +45,22 @@
     }
   }
 }
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1.2em;
+
+  td:first-of-type {
+    color: #cecaeb;
+    width: 50%;
+    text-transform: capitalize;
+  }
+  td:last-of-type {
+    color: white;
+    font-weight: bold;
+    width: 50%;
+    text-align: right;
+  }
+}

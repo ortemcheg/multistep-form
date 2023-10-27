@@ -51,6 +51,8 @@ We'll utilize `zod` to parse data from external sources, including forms and API
 
 ### Clean-ups
 
+[] Add a spinner for the loading state for the Select component. (? Extract fetching countries to Select 🧐?)
+
 [] Eradicate MUI, including it was a mistake 🤷🏼‍♂️. Use CSS Grid for the layout.
 
 [] Use CSS custom props (variables)

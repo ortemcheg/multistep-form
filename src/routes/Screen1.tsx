@@ -1,9 +1,10 @@
-import React, { type FormEventHandler } from "react";
+import React from "react";
 import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
 import Select from "../components/common/Select/Select";
 import FormInput from "../components/common/FormInput/FormInput";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import useGetCountries from "./useGetCountries";
 
 import { z } from "zod";
@@ -25,33 +26,97 @@ export interface ScreenProps {
 
 const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
   const { status: countryApiStatus, data: countries } = useGetCountries();
-  const submitHandler: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
+  // const countryApiStatus = "success";
+  // const countries = ["Afghan", "Russia", "United States of America"];
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = useForm<z.infer<typeof formValidationSchema>>({
+    resolver: zodResolver(formValidationSchema),
+  });
+
+  console.log(watch(["username", "email", "phoneNumber", "country"]));
+
+  const submitHandler: SubmitHandler<z.infer<typeof formValidationSchema>> = (
+    data
+  ) => {
+    const { username, email, phoneNumber, country } = data;
     dispatch(
       addData({
-        username: "tester",
-        email: "hello@world",
-        phoneNumber: "234",
-        country: "Ahaha",
+        username,
+        email,
+        phoneNumber,
+        country,
       })
     );
   };
 
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
+    <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
       <ul>
         <li>
-          <FormInput type="text" label="Username" />
+          <Controller
+            name="username"
+            control={control}
+            render={({ field }) => (
+              <FormInput
+                type="text"
+                label="Username"
+                {...field}
+                isError={"username" in errors}
+                errorMessage={"username" in errors ? "Invalid username" : ""}
+              />
+            )}
+          />
         </li>
         <li>
-          <FormInput type="email" label="Email" />
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <FormInput
+                type="email"
+                label="Email"
+                {...field}
+                isError={"email" in errors}
+                errorMessage={"email" in errors ? "Invalid email" : ""}
+              />
+            )}
+          />
         </li>
         <li>
-          <FormInput type="telemele" label="Phone number" />
+          <Controller
+            name="phoneNumber"
+            control={control}
+            render={({ field }) => (
+              <FormInput
+                type="tel"
+                label="Phone Number"
+                {...field}
+                isError={"phoneNumber" in errors}
+                errorMessage={
+                  "phoneNumber" in errors ? "Invalid phone number" : ""
+                }
+              />
+            )}
+          />
         </li>
         <li>
           {countryApiStatus === "success" && (
-            <Select label="Country" items={countries} />
+            <Controller
+              name="country"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Country"
+                  items={countries}
+                  isValid={true}
+                />
+              )}
+            />
           )}
         </li>
       </ul>
