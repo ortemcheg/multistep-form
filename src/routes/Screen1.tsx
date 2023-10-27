@@ -37,7 +37,6 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
 
   return (
     <form className={styles.form} onSubmit={submitHandler}>
-      <Select label="Country" />
       <ul>
         <li>
           <label htmlFor="username">username</label>
@@ -52,10 +51,7 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
           <input type="tel" id="phoneNumber" />
         </li>
         <li>
-          <label htmlFor="country">country</label>
-          <select id="country">
-            <option>hi there</option>
-          </select>
+          <Select label="Country" />
         </li>
       </ul>
       <button type="submit">continue</button>

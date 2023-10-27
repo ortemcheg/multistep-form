@@ -1,13 +1,17 @@
 .label {
   display: block;
+  margin-block-end: 0.5rem;
   color: white;
   font-family: Inter, sans-serif;
 }
+
 .popover {
   background-color: white;
+  width: var(--trigger-width);
   height: 12.5rem;
   overflow-y: scroll;
 }
+
 .button {
   width: 100%;
   font-family: Inter, sans-serif;
@@ -18,6 +22,7 @@
   display: flex;
   align-items: center;
   border: 0;
+  margin-block-end: 0.5rem;
 
   *:last-child {
     margin-left: auto;
@@ -29,6 +34,12 @@
   color: #413c5f;
   background-color: white;
   padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+
+  &:has(.selectedItem) {
+    background-color: #f6f4ff;
+  }
 
   &:hover {
     outline: none;
@@ -37,4 +48,9 @@
 }
 .selectedItem {
   font-weight: 600;
+  margin-inline-end: 0.5rem;
+}
+
+.helpText {
+  color: #da2121;
 }
