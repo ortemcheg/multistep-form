@@ -3,7 +3,10 @@
 ## Abstract
 
 Implements Multistep form according to the following specification:
-Design: [Figma](https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)
+
+### Design:
+
+[As presented in Figma](https://www.figma.com/file/KsJexV6VyuYDTAzjcXlZ9t)
 
 ### Expected Behaviour:
 
