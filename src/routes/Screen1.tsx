@@ -1,7 +1,8 @@
 import React, { type FormEventHandler } from "react";
 import styles from "./Screen.module.scss";
 import { addData } from "../state/appReducer";
-import Select from "../components/ common/Select/Select";
+import Select from "../components/common/Select/Select";
+import FormInput from "../components/common/FormInput/FormInput";
 import useGetCountries from "./useGetCountries";
 
 import { z } from "zod";
@@ -39,16 +40,13 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
     <form className={styles.form} onSubmit={submitHandler}>
       <ul>
         <li>
-          <label htmlFor="username">username</label>
-          <input type="text" id="username" />
+          <FormInput type="text" label="Username" />
         </li>
         <li>
-          <label htmlFor="email">email</label>
-          <input type="email" id="email" />
+          <FormInput type="email" label="Email" />
         </li>
         <li>
-          <label htmlFor="phoneNumber">phone number</label>
-          <input type="tel" id="phoneNumber" />
+          <FormInput type="telemele" label="Phone number" />
         </li>
         <li>
           <Select label="Country" />

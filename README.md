@@ -57,6 +57,8 @@ We'll utilize `zod` to parse data from external sources, including forms and API
 
 [] Implement testing
 
+[] Make changes to the project structure
+
 ### Futher optimizations
 
 - Instead of rendering the entire form at each step, we could choose to render only the fields, leaving the button and the form element in the DOM consistently. However, this approach would significantly complicate validation when using useForm 🤔
