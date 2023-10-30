@@ -20,7 +20,7 @@ const Screen2: React.FC<LastScreenProps> = ({ dispatch, data }) => {
             {Object.entries(data)
               .filter(([name, _]) => name !== "password")
               .map(([name, value]) => (
-                <tr>
+                <tr key={name}>
                   <td>{name}</td>
                   <td>{value}</td>
                 </tr>

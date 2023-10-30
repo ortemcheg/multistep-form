@@ -17,17 +17,17 @@ const formValidationSchema = z
     // path: ["confirm"], // path of error
   });
 
+type FormInputs = z.infer<typeof formValidationSchema>;
+
 const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<z.infer<typeof formValidationSchema>>({
+  } = useForm<FormInputs>({
     resolver: zodResolver(formValidationSchema),
   });
-  const submitHandler: SubmitHandler<z.infer<typeof formValidationSchema>> = (
-    data
-  ) => {
+  const submitHandler: SubmitHandler<FormInputs> = (data) => {
     const { password } = data;
     dispatch(
       addData({
@@ -49,6 +49,7 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
                 {...field}
                 isError={"password" in errors}
                 errorMessage={"password" in errors ? "Invalid password" : ""}
+                autoComplete="new-password"
               />
             )}
           />
@@ -66,6 +67,7 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
                 errorMessage={
                   "confirmPassword" in errors ? "Passwords don't match" : ""
                 }
+                autoComplete="new-password"
               />
             )}
           />

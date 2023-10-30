@@ -24,24 +24,19 @@ export interface ScreenProps {
   dispatch: React.Dispatch<ReturnType<typeof addData>>;
 }
 
+type FormInputs = z.infer<typeof formValidationSchema>;
+
 const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
   const { status: countryApiStatus, data: countries } = useGetCountries();
-  // const countryApiStatus = "success";
-  // const countries = ["Afghan", "Russia", "United States of America"];
   const {
     control,
     formState: { errors },
     handleSubmit,
-    watch,
-  } = useForm<z.infer<typeof formValidationSchema>>({
+  } = useForm<FormInputs>({
     resolver: zodResolver(formValidationSchema),
   });
 
-  console.log(watch(["username", "email", "phoneNumber", "country"]));
-
-  const submitHandler: SubmitHandler<z.infer<typeof formValidationSchema>> = (
-    data
-  ) => {
+  const submitHandler: SubmitHandler<FormInputs> = (data) => {
     const { username, email, phoneNumber, country } = data;
     dispatch(
       addData({
@@ -67,6 +62,7 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
                 {...field}
                 isError={"username" in errors}
                 errorMessage={"username" in errors ? "Invalid username" : ""}
+                autoComplete="username"
               />
             )}
           />
@@ -82,6 +78,8 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
                 {...field}
                 isError={"email" in errors}
                 errorMessage={"email" in errors ? "Invalid email" : ""}
+                autoComplete="username"
+                inputMode="email"
               />
             )}
           />
@@ -99,6 +97,8 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
                 errorMessage={
                   "phoneNumber" in errors ? "Invalid phone number" : ""
                 }
+                inputMode="tel"
+                autoComplete="tel"
               />
             )}
           />
@@ -113,7 +113,8 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
                   {...field}
                   label="Country"
                   items={countries}
-                  isValid={true}
+                  isValid={"country" in errors}
+                  errorMessage={"country" in errors ? "Choose a country" : ""}
                 />
               )}
             />
