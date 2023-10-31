@@ -23,8 +23,10 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid: isFormValid },
   } = useForm<FormInputs>({
+    mode: "onBlur",
+    reValidateMode: "onChange",
     resolver: zodResolver(formValidationSchema),
   });
   const submitHandler: SubmitHandler<FormInputs> = (data) => {
@@ -73,7 +75,9 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
           />
         </li>
       </ul>
-      <button type="submit">continue</button>
+      <button type="submit" disabled={!isFormValid}>
+        continue
+      </button>
     </form>
   );
 };

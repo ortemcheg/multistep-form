@@ -30,9 +30,11 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
   const { status: countryApiStatus, data: countries } = useGetCountries();
   const {
     control,
-    formState: { errors },
+    formState: { errors, isValid: isFormValid },
     handleSubmit,
   } = useForm<FormInputs>({
+    mode: "onBlur",
+    reValidateMode: "onChange",
     resolver: zodResolver(formValidationSchema),
   });
 
@@ -121,7 +123,9 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
           )}
         </li>
       </ul>
-      <button type="submit">continue</button>
+      <button type="submit" disabled={!isFormValid}>
+        continue
+      </button>
     </form>
   );
 };
