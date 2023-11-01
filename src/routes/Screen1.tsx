@@ -36,6 +36,12 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
     mode: "onBlur",
     reValidateMode: "onChange",
     resolver: zodResolver(formValidationSchema),
+    defaultValues: {
+      username: "",
+      phoneNumber: "",
+      email: "",
+      country: "",
+    },
   });
 
   const submitHandler: SubmitHandler<FormInputs> = (data) => {

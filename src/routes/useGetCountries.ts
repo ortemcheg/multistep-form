@@ -37,6 +37,10 @@ const useGetCountries = (): Countries => {
       try {
         const resp = await fetch(COUNTRIES_API_ENDPOINT);
         if (resp.ok) {
+          // This if block is here because
+          // there are responses (e.g., 429) that,
+          // while not returning a network error,
+          // do not carry a payload but resolve normally
           const rawData: Promise<unknown> = await resp.json();
           const countriesInfo = countriesApiDataSchema.parse(rawData);
           const countries = countriesInfo

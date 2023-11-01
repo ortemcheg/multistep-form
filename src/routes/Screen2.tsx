@@ -28,6 +28,10 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
     mode: "onBlur",
     reValidateMode: "onChange",
     resolver: zodResolver(formValidationSchema),
+    defaultValues: {
+      password: "",
+      confirmPassword: "",
+    },
   });
   const submitHandler: SubmitHandler<FormInputs> = (data) => {
     const { password } = data;

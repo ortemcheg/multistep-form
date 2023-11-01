@@ -7,7 +7,7 @@ export interface LastScreenProps {
   dispatch: React.Dispatch<ReturnType<typeof resetForm>>;
 }
 
-const Screen2: React.FC<LastScreenProps> = ({ dispatch, data }) => {
+const Screen3: React.FC<LastScreenProps> = ({ dispatch, data }) => {
   const submitHandler: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch(resetForm());
@@ -33,4 +33,4 @@ const Screen2: React.FC<LastScreenProps> = ({ dispatch, data }) => {
   );
 };
 
-export default Screen2;
+export default Screen3;
