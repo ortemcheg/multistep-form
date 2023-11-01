@@ -69,7 +69,9 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
                 label="Username"
                 {...field}
                 isError={"username" in errors}
-                errorMessage={"username" in errors ? "Invalid username" : ""}
+                errorMessage={
+                  "username" in errors ? errors.username?.message : ""
+                }
                 autoComplete="username"
               />
             )}
@@ -85,7 +87,7 @@ const Screen1: React.FC<ScreenProps> = ({ dispatch }) => {
                 label="Email"
                 {...field}
                 isError={"email" in errors}
-                errorMessage={"email" in errors ? "Invalid email" : ""}
+                errorMessage={"email" in errors ? errors.email?.message : ""}
                 autoComplete="username"
                 inputMode="email"
               />

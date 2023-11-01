@@ -14,7 +14,6 @@ const formValidationSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
-    // path: ["confirm"], // path of error
   });
 
 type FormInputs = z.infer<typeof formValidationSchema>;
@@ -41,6 +40,7 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
       })
     );
   };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
       <ul>
@@ -54,7 +54,9 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
                 type="password"
                 {...field}
                 isError={"password" in errors}
-                errorMessage={"password" in errors ? "Invalid password" : ""}
+                errorMessage={
+                  "password" in errors ? errors.password?.message : ""
+                }
                 autoComplete="new-password"
               />
             )}
@@ -71,7 +73,9 @@ const Screen2: React.FC<ScreenProps> = ({ dispatch }) => {
                 {...field}
                 isError={"confirmPassword" in errors}
                 errorMessage={
-                  "confirmPassword" in errors ? "Passwords don't match" : ""
+                  "confirmPassword" in errors
+                    ? errors.confirmPassword?.message
+                    : ""
                 }
                 autoComplete="new-password"
               />
