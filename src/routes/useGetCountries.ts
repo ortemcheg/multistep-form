@@ -34,23 +34,26 @@ const useGetCountries = (): Countries => {
     (async () => {
       if (result.status !== "idle") return;
       setResult({ status: "pending", data: undefined });
-      const resp = await fetch(COUNTRIES_API_ENDPOINT);
-      if (resp.ok) {
-        try {
+      try {
+        const resp = await fetch(COUNTRIES_API_ENDPOINT);
+        if (resp.ok) {
           const rawData: Promise<unknown> = await resp.json();
           const countriesInfo = countriesApiDataSchema.parse(rawData);
           const countries = countriesInfo
             .map((country) => country.name.common)
             .sort();
           setResult({ status: "success", data: countries });
-        } catch (e) {
-          // log error
-          console.error("Unexpected data format", e);
+        } else {
+          // log error, send it to somethng like Sentry
+          console.error(`Server error: ${resp.status} ${resp.statusText}`);
           setResult({ status: "error", data: null });
         }
-      } else {
-        // log error
-        console.error("The API server is down");
+      } catch (e) {
+        // log error, send it to somethng like Sentry
+        console.error(
+          "Either the API server is down or we got the data in an unexpected format",
+          e
+        );
         setResult({ status: "error", data: null });
       }
     })();
