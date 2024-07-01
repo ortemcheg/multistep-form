@@ -1,4 +1,13 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+}
 .header {
+  grid-area: header;
   font-family: "Inter", sans-serif;
   margin: 4.5rem 0;
   > h1 {
